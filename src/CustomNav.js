@@ -11,6 +11,12 @@ const CustomNav = () => {
         <Item>
           <Link to="/">Categoría 2</Link>
         </Item>
+        <Item>
+          <Link to="/">Categoría 3</Link>
+        </Item>
+        <Item>
+          <Link to="/">Categoría 4</Link>
+        </Item>        
       </Nav>
     );
 }
