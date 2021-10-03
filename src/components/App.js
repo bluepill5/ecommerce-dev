@@ -1,6 +1,7 @@
 import Header from "./Header";
 import ItemListContainer from "./ItemListContainer";
 import Main from "./Main";
+import MainPromise from "./MainPromise"
 import Footer from "./Footer";
 import Container from "react-bootstrap/Container";
 import {useState, useEffect} from 'react';
@@ -24,7 +25,7 @@ const App = () => {
       <Container fluid={true}>
         <p>El contador va: {contador}</p>
         <button onClick={aumentar}>Sumar</button>
-        <Main />
+        <MainPromise />
         <Footer />
       </Container>
     </>
