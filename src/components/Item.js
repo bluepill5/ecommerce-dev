@@ -2,6 +2,7 @@ import Card from 'react-bootstrap/Card';
 import Col from "react-bootstrap/Col";
 import Button from 'react-bootstrap/Button';
 import ItemCount from './ItemCount';
+import '../css/itemStyle.css';
 
 const { Body, Img, Footer, Text, Title} = Card;
 
@@ -14,7 +15,7 @@ const Item = (props) => {
           <Body>
             <Title>{titleProd}</Title>
             <Text>Precio: ${priceProd}</Text>
-            <Text>{descProd}</Text>
+            <Text className="overFlowText">{descProd}</Text>
             <ItemCount stock={7} initial={0}/>
             <Footer>
               <Button variant="dark">Ver detalle</Button>

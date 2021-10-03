@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import '../css/buttonStyle.css';
 
 const ItemCount = (props) => {
@@ -15,7 +15,7 @@ const ItemCount = (props) => {
 
     return (
       <div>
-        <div className="Count">
+        <div className="count">
           <button
             className="icon-minus"
             onClick={minusQuantity}
@@ -23,7 +23,7 @@ const ItemCount = (props) => {
           >
             <i className="material-icons">remove</i>
           </button>
-          {" -   " + quantity + "  - "}
+          <p className="counter">{quantity}</p>
           <button
             className="icon-add"
             onClick={addQuantity}
@@ -32,7 +32,7 @@ const ItemCount = (props) => {
             <i className="material-icons">add</i>
           </button>
         </div>
-        <div>
+        <div className="containerButton">
           <button className="buttonCarrito">Agregar al carrito</button>
         </div>
       </div>

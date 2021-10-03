@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import Item from './Item';
 
 const DB_PRODUCTS = [
@@ -255,7 +254,7 @@ const crearPromesa = () => {
     setTimeout(() => {
       const error = comprobarError();
       if (!error) {
-        resolve(DB_FOOD);
+        resolve(DB_PRODUCTS);
       } else {
         reject(new Error("Error obteniendo los datos"));
       }
@@ -290,10 +289,10 @@ const ItemList = () => {
           {items !== null &&
             items.map((itm, index) => (
               <Item
-                srcImg={itm.thumbnail}
+                srcImg={itm.image}
                 titleProd={itm.title}
                 priceProd={itm.price}
-                descProd="Descripción del producto ..."
+                descProd={itm.description}
               />
             ))}
         </Row>
