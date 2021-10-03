@@ -1,6 +1,7 @@
 import Card from 'react-bootstrap/Card';
 import Col from "react-bootstrap/Col";
 import Button from 'react-bootstrap/Button';
+import ItemCount from './ItemCount';
 
 const { Body, Img, Footer, Text, Title} = Card;
 
@@ -14,6 +15,7 @@ const Item = (props) => {
             <Title>{titleProd}</Title>
             <Text>Precio: ${priceProd}</Text>
             <Text>{descProd}</Text>
+            <ItemCount stock={7} initial={0}/>
             <Footer>
               <Button variant="dark">Ver detalle</Button>
             </Footer>

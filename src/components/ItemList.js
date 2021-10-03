@@ -263,7 +263,7 @@ const crearPromesa = () => {
   });
 };
 
-const MainPromise = () => {
+const ItemList = () => {
     // Inicializamos los estados
     const [items, setItems] = useState(null);
     const [estado, setEstado] = useState('Cargando ...');
@@ -286,7 +286,6 @@ const MainPromise = () => {
     }, []);
 
     return (
-      <main>
         <Row>
           {items !== null &&
             items.map((itm, index) => (
@@ -298,15 +297,7 @@ const MainPromise = () => {
               />
             ))}
         </Row>
-      </main>
     );
 }
 
-export default MainPromise;
-
-
-
-
-
-
-
+export default ItemList;
