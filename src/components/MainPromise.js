@@ -285,20 +285,18 @@ const MainPromise = () => {
             })
     }, []);
 
-    return(
+    return (
       <main>
         <Row>
-        <Col sm={6} md={4} lg={3} className="pt-3">
-            {(items !== null) && items.map(
-              (itm, index) => 
+          {items !== null &&
+            items.map((itm, index) => (
               <Item
                 srcImg={itm.thumbnail}
                 titleProd={itm.title}
                 priceProd={itm.price}
                 descProd="Descripción del producto ..."
               />
-            )}
-          </Col>
+            ))}
         </Row>
       </main>
     );
