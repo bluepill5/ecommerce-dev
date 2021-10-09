@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
-import Row from "react-bootstrap/Row";
-import Item from "./Item";
-import { useParams } from "react-router-dom";
+import {useEffect, useState} from "react";
+import {useParams} from "react-router";
+import ItemDetail from "./ItemDetail";
 
 const DB_PRODUCTS = [
   {
@@ -192,72 +191,23 @@ const DB_PRODUCTS = [
   },
 ];
 
-// Funcion para simular un error
-const categories = {
-  1: "electronics",
-  2: "jewelery",
-  3: "women's clothing",
-  4: "men's clothing",
-};
+const ItemDetailContainer = () => {
+    const [product, setProduct] = useState({});
+    const {id} = useParams();
 
-const crearPromesa = () => {
-  return new Promise((resolve, reject) => {
-    // Se simula la demora de la red
-    setTimeout(() => {
-      //const products = DB_PRODUCTS.find(product => product);
-      const products = DB_PRODUCTS;
-      resolve(products);
-    }, 500);
-  });
-};
+    useEffect(() => {
+        const promesa = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                const product = DB_PRODUCTS.find(product => product.id == id);
+                resolve(product);
+            }, 2000);
+        });
+        promesa.then(product => setProduct(product));
+    }, [id]);
+    return (
+        <ItemDetail product={product}/>
+    );
+}
 
-const ItemList = () => {
-  // Inicializamos los estados
-  const [items, setItems] = useState(null);
-  const [estado, setEstado] = useState("Cargando ...");
-  const { id } = useParams();
+export default ItemDetailContainer;
 
-  const filterCategory = (obj, id) => {
-    if (!id) {
-      return true;
-    } else {
-      return obj.category === categories[id];
-    }
-  };
-
-  useEffect(() => {
-    let requestDatos = crearPromesa();
-    // Una vez que la promesa se cumple se ejecuta .then()
-    // se guardan los datos en el estado
-    requestDatos
-      .then((items_promise) => {
-        setItems(items_promise);
-        setEstado("Listo!");
-      })
-      .catch((err) => {
-        setEstado("Error!!!");
-      })
-      .finally(() => {
-        console.log("Promesa terminada!!!");
-      });
-  }, []);
-
-  return (
-    <Row>
-      {items !== null &&
-        items
-          .filter((product) => filterCategory(product, id))
-          .map((itm, index) => (
-            <Item
-              idProd={itm.id}
-              srcImg={itm.image}
-              titleProd={itm.title}
-              priceProd={itm.price}
-              descProd={itm.description}
-            />
-          ))}
-    </Row>
-  );
-};
-
-export default ItemList;

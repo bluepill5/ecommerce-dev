@@ -1,11 +1,20 @@
 import ItemList from './ItemList';
+import React, {useState, useEffect} from 'react';
+import {useParams} from 'react-router-dom';
 
 const ItemListContainer = () => {
-    return (
-      <main>
-        <ItemList />
-      </main>
-    );
-}
+  const {id} = useParams();
+  console.log(id);
+
+  useEffect(() => {
+    console.log('Aca hago el pedido')
+  }, [id]);
+
+  return (
+    <main>
+      <ItemList />
+    </main>
+  );
+};
 
 export default ItemListContainer;
