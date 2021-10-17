@@ -8,12 +8,15 @@ const Cart = () => {
     useEffect(() => {
       let tot = 0;
       carrito.map((item) => {
-        tot = tot + item.price;
+        tot = tot + item.price * item.quantity;
       });
       setTotal(tot);
     }, []);
 
-    console.log(carrito);
+    const onRemove = (index) => {
+      removeItem(index);
+    };
+
     return (
         
       <div className="Container">
@@ -23,7 +26,8 @@ const Cart = () => {
                   <img src={item.image} width="100px" alt="" />
                   <li className="list-group-item">{item.title}</li>
                   <li className="list-group-item">{item.price}</li>
-                  <button onClick={removeItem(item.id)}>Eliminar</button>
+                  <li className="list-group-item">{item.quantity}</li>
+                  <button onClick={() => {onRemove(index)}}>Eliminar</button>
               </ul>
           );
         })}

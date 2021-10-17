@@ -16,19 +16,25 @@ const CartProvider = ({children}) => {
         console.log("No se procesa");
       } else {
         if (isInCart(product)) {
-          console.log("elemento en carrito")
+          console.log("Esta");
+          let item = { ...product };
+          item.quantity = quantity;
+          carrito.map((elem) => {
+            if (product.id == elem.id) elem.quantity = elem.quantity + quantity;
+          });
+          setCarrito([...carrito]);
         } else {
-          let item = product;
-          product.quantity = quantity;
+          let item = { ...product };
+          item.quantity = quantity;
           setCarrito([...carrito, item]);
+          console.log(carrito);
         }
       }
     };
 
     const removeItem = (id) => {
-        let carritoTemp = carrito;
-        carritoTemp.splice(id, 1)
-        setCarrito(carritoTemp);
+        carrito.splice(id, 1);
+        setCarrito([...carrito]);
     }
 
     const clearCart = () => {

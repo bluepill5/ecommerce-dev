@@ -9,12 +9,10 @@ import { useCart } from "../CartContext";
 const { Body, Img, Footer, Text, Title } = Card;
 
 const Item = ({product}) => {
-  const { carrito, addItem } = useCart();
+  const { addItem } = useCart();
 
   const onAdd = (quantity) => {
     addItem(product, quantity);
-    console.log("Carrito:");
-    console.log(carrito);
   };
 
   return (
