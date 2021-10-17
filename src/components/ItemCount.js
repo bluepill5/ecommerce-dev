@@ -2,7 +2,7 @@ import {useState} from 'react';
 import '../css/buttonStyle.css';
 
 const ItemCount = (props) => {
-    const {stock, initial} = props;
+    const {stock, initial, onAdd} = props;
     const [quantity, setQuantity] = useState(initial);
 
     const addQuantity = () => {
@@ -11,6 +11,10 @@ const ItemCount = (props) => {
 
     const minusQuantity = () => {
         setQuantity(quantity - 1);
+    }
+
+    const confirm = () => {
+      onAdd(quantity);
     }
 
     return (
@@ -33,7 +37,8 @@ const ItemCount = (props) => {
           </button>
         </div>
         <div className="containerButton">
-          <button className="buttonCarrito">Agregar al carrito</button>
+          <button className="buttonCarrito" onClick={confirm}>Agregar</button>
+          <button className="buttonCarrito">Confirmar</button>
         </div>
       </div>
     );

@@ -15,6 +15,9 @@ const CustomNav = () => {
       <StyledLink to="/categoria/4">
         <Item>Men's Clothing</Item>
       </StyledLink>
+      <StyledLink to="/cart">
+        <Item>Carrito</Item>
+      </StyledLink>
     </Nav>
   );
 };
