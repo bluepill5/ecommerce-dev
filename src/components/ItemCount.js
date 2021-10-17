@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import StyledLink from './StyledLink';
 import '../css/buttonStyle.css';
 
 const ItemCount = (props) => {
@@ -37,8 +38,12 @@ const ItemCount = (props) => {
           </button>
         </div>
         <div className="containerButton">
-          <button className="buttonCarrito" onClick={confirm}>Agregar</button>
-          <button className="buttonCarrito">Confirmar</button>
+          <button className="buttonCarrito" onClick={confirm}>
+            Agregar
+          </button>
+          <StyledLink to="/cart">
+            <button className="buttonCarrito">Confirmar</button>
+          </StyledLink>
         </div>
       </div>
     );

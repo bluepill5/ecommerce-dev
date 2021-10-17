@@ -1,5 +1,6 @@
 import { useCart } from "../CartContext";
 import { useState, useEffect } from "react";
+import NumberFormat from 'react-number-format';
 
 const Cart = () => {
     const {carrito, removeItem, clearCart} = useCart();
@@ -10,7 +11,7 @@ const Cart = () => {
       carrito.map((item) => {
         tot = tot + item.price * item.quantity;
       });
-      setTotal(tot);
+      setTotal(tot.toFixed(2));
     }, [carrito]);
 
     const onRemove = (index) => {
@@ -25,14 +26,14 @@ const Cart = () => {
               <ul className="list-group" key={index}>
                   <img src={item.image} width="100px" alt="" />
                   <li className="list-group-item">{item.title}</li>
-                  <li className="list-group-item">{item.price}</li>
+                  <li className="list-group-item"><NumberFormat value={item.price} displayType={'text'} thousandSeparator={true} prefix={'$'}/></li>
                   <li className="list-group-item">{item.quantity}</li>
                   <button className="icon-minus" onClick={() => {onRemove(index)}}>Eliminar</button>
               </ul>
           );
         })}
-        <button className="icon-minus" onClick={clearCart}>Vaciar Carrito</button>
-        <h1>Total: {total}</h1>
+        <button className="icon-minus"  onClick={clearCart}>Vaciar Carrito</button>
+        <h1>Total: <NumberFormat value={total} displayType={'text'} thousandSeparator={true} prefix={'$'} /></h1>
       </div>
      
     );
