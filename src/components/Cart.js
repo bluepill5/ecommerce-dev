@@ -2,7 +2,7 @@ import { useCart } from "../CartContext";
 import { useState, useEffect } from "react";
 
 const Cart = () => {
-    const {carrito, removeItem} = useCart();
+    const {carrito, removeItem, clearCart} = useCart();
     const [total, setTotal] = useState(0);
 
     useEffect(() => {
@@ -11,7 +11,7 @@ const Cart = () => {
         tot = tot + item.price * item.quantity;
       });
       setTotal(tot);
-    }, []);
+    }, [carrito]);
 
     const onRemove = (index) => {
       removeItem(index);
@@ -27,10 +27,11 @@ const Cart = () => {
                   <li className="list-group-item">{item.title}</li>
                   <li className="list-group-item">{item.price}</li>
                   <li className="list-group-item">{item.quantity}</li>
-                  <button onClick={() => {onRemove(index)}}>Eliminar</button>
+                  <button className="icon-minus" onClick={() => {onRemove(index)}}>Eliminar</button>
               </ul>
           );
         })}
+        <button className="icon-minus" onClick={clearCart}>Vaciar Carrito</button>
         <h1>Total: {total}</h1>
       </div>
      

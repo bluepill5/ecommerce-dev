@@ -1,8 +1,14 @@
 import Nav from "react-bootstrap/Nav";
 import StyledLink from "./StyledLink";
+import { useCart } from "../CartContext";
+import Badge from "react-bootstrap/Badge";
+
+
 const { Item } = Nav;
 
 const CustomNav = () => {
+  const {carrito} = useCart();
+
   return (
     <Nav>
       <StyledLink to="/categoria/1">Electronics</StyledLink>
@@ -16,7 +22,7 @@ const CustomNav = () => {
         <Item>Men's Clothing</Item>
       </StyledLink>
       <StyledLink to="/cart">
-        <Item>Carrito</Item>
+        <Item><i className="material-icons">shopping_cart</i>{carrito.length === 0 ? <Badge pill bg="dark">{carrito.length}</Badge> : <Badge pill bg="danger">{carrito.length}</Badge>}</Item>
       </StyledLink>
     </Nav>
   );
