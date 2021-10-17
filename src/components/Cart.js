@@ -19,10 +19,10 @@ const Cart = () => {
       <div className="Container">
         {carrito.map((item, index) => {
           return (
-              <ul class="list-group" key={index}>
+              <ul className="list-group" key={index}>
                   <img src={item.image} width="100px" alt="" />
-                  <li class="list-group-item">{item.title}</li>
-                  <li class="list-group-item">{item.price}</li>
+                  <li className="list-group-item">{item.title}</li>
+                  <li className="list-group-item">{item.price}</li>
                   <button onClick={removeItem(item.id)}>Eliminar</button>
               </ul>
           );

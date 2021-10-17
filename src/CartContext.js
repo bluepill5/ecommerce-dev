@@ -12,12 +12,18 @@ const CartProvider = ({children}) => {
     const [carrito, setCarrito] = useState([]);
 
     const addItem = (product, quantity) => {
-        if (quantity == 0) {
-            console.log("No se puede")
+      if (quantity == 0 || quantity > product.stock) {
+        console.log("No se procesa");
+      } else {
+        if (isInCart(product)) {
+          console.log("elemento en carrito")
         } else {
-            setCarrito([...carrito, product]);
-        }        
-    }
+          let item = product;
+          product.quantity = quantity;
+          setCarrito([...carrito, item]);
+        }
+      }
+    };
 
     const removeItem = (id) => {
         let carritoTemp = carrito;
@@ -30,7 +36,7 @@ const CartProvider = ({children}) => {
     }
 
     const isInCart = (product) => {
-
+        return carrito.some((elem) => product.id == elem.id);
     }
 
     const value_context = {
