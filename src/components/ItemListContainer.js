@@ -1,18 +1,41 @@
 import ItemList from './ItemList';
 import React, {useState, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
+import {firestore} from "./firebase";
 
 const ItemListContainer = () => {
+  const [products, setProducts] = useState(null);
   const {id} = useParams();
-  console.log(id);
 
   useEffect(() => {
-    console.log('Aca hago el pedido')
+    // referencia a la db
+    const db = firestore;
+    // referencia a la coleccion
+    const collection = db.collection("products");
+    // se hace la consulta: get, where, doc, add
+    const query = collection.get();
+
+    query
+      .then((res) => {
+        const documents = res.docs;
+        const products = [];
+        documents.forEach((producto) => {
+          const id = producto.id;
+          const elements = producto.data();
+          const c_product = { id, ...elements };
+          products.push(c_product);
+        });
+        console.log(products);
+        setProducts(products);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, [id]);
 
   return (
     <main>
-      <ItemList />
+      <ItemList products={products}/>
     </main>
   );
 };
