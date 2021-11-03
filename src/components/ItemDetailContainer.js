@@ -1,13 +1,17 @@
 import {useEffect, useState} from "react";
 import {useParams} from "react-router";
 import ItemDetail from "./ItemDetail";
+import LoadingPage from "./LoadingPage";
 import {firestore} from "./firebase";
 
 const ItemDetailContainer = () => {
   const [product, setProduct] = useState({});
+  const [loading, setLoading] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
+    // pagina de espera
+    setLoading(true);
     // referencia a la db
     const db = firestore;
     // referencia a la coleccion
@@ -22,10 +26,13 @@ const ItemDetailContainer = () => {
       })
       .catch((error) => {
         console.log(error);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }, [id]);
 
-  return <ItemDetail product={product} />;
+  return <>{loading ? <LoadingPage /> : <ItemDetail product={product} />}</>;
 };
 
 export default ItemDetailContainer;

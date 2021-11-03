@@ -7,7 +7,7 @@ import Badge from "react-bootstrap/Badge";
 const { Item } = Nav;
 
 const CustomNav = () => {
-  const {carrito} = useCart();
+  const {carrito, calcAmount} = useCart();
 
   return (
     <Nav>
@@ -22,7 +22,7 @@ const CustomNav = () => {
         <Item>Men's Clothing</Item>
       </StyledLink>
       <StyledLink to="/cart">
-        <Item><i className="material-icons">shopping_cart</i>{carrito.length === 0 ? <Badge pill bg="dark">{carrito.length}</Badge> : <Badge pill bg="danger">{carrito.length}</Badge>}</Item>
+        <Item><i className="material-icons">shopping_cart</i>{carrito.length === 0 ? <Badge pill bg="dark">{calcAmount()}</Badge> : <Badge pill bg="danger">{calcAmount()}</Badge>}</Item>
       </StyledLink>
     </Nav>
   );

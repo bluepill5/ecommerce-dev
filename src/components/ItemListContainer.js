@@ -1,13 +1,17 @@
 import ItemList from './ItemList';
+import LoadingPage from './LoadingPage';
 import React, {useState, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 import {firestore} from "./firebase";
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState(null);
+  const [loading, setLoading] = useState(false);
   const {id} = useParams();
 
   useEffect(() => {
+    // pagina de espera
+    setLoading(true);
     // referencia a la db
     const db = firestore;
     // referencia a la coleccion
@@ -30,12 +34,15 @@ const ItemListContainer = () => {
       })
       .catch((error) => {
         console.log(error);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }, [id]);
 
   return (
     <main>
-      <ItemList products={products}/>
+      {loading ? <LoadingPage />: <ItemList products={products}/>}
     </main>
   );
 };

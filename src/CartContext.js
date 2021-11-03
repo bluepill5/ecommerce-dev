@@ -37,18 +37,28 @@ const CartProvider = ({children}) => {
         setCarrito([...carrito]);
     }
 
-    const clearCart = () => {
-        setCarrito([]);
+    const calcAmount = () => {
+      return carrito.reduce((acc, prod) => acc + prod.quantity, 0);
+    }
+
+    const calcTotal = () => {
+      return carrito.reduce((acc, prod) => acc + prod.quantity * prod.price, 0);
     }
 
     const isInCart = (product) => {
         return carrito.some((elem) => product.id == elem.id);
     }
 
+    const clearCart = () => {
+      setCarrito([]);
+    }
+
     const value_context = {
         carrito,
         addItem,
         removeItem,
+        calcAmount,
+        calcTotal,
         clearCart
     }
 

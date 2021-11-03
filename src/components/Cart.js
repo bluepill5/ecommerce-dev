@@ -1,6 +1,7 @@
 import { useCart } from "../CartContext";
 import { useState, useEffect } from "react";
 import NumberFormat from 'react-number-format';
+import { Link } from "react-router-dom";
 
 const Cart = () => {
     const {carrito, removeItem, clearCart} = useCart();
@@ -20,19 +21,22 @@ const Cart = () => {
 
     return (
         
-      <div className="Container">
+      <div className="Container p-4">
         {carrito.map((item, index) => {
           return (
               <ul className="list-group" key={index}>
-                  <img src={item.image} width="100px" alt="" />
+                  <img className="rounded mx-auto d-block m-3" src={item.image} width="100px" alt="" />
                   <li className="list-group-item">{item.title}</li>
                   <li className="list-group-item"><NumberFormat value={item.price} displayType={'text'} thousandSeparator={true} prefix={'$'}/></li>
                   <li className="list-group-item">{item.quantity}</li>
-                  <button className="icon-minus" onClick={() => {onRemove(index)}}>Eliminar</button>
+                  <button className="btn btn-danger" onClick={() => {onRemove(index)}}>Eliminar</button>
               </ul>
           );
         })}
-        <button className="icon-minus"  onClick={clearCart}>Vaciar Carrito</button>
+        <button className="btn btn-danger"  onClick={clearCart}>Vaciar Carrito</button>
+        <Link to={`/checkout`} className="btn btn-success m-3">
+          Terminar mi compra
+        </Link>
         <h1>Total: <NumberFormat value={total} displayType={'text'} thousandSeparator={true} prefix={'$'} /></h1>
       </div>
      
