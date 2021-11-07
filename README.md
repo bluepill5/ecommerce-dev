@@ -28,4 +28,4 @@ Las principales tecnologías usadas son:
 
 ## Demo
 
-![Demo](https://media.giphy.com/media/Atbc2XX8dcXpg1ZU48/giphy.gif)
+https://user-images.githubusercontent.com/4382527/140629444-ee459d7a-baea-4703-b39b-18891af1ca2a.mp4
