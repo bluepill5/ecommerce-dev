@@ -29,7 +29,6 @@ const ItemListContainer = () => {
           const c_product = { id, ...elements };
           products.push(c_product);
         });
-        console.log(products);
         setProducts(products);
       })
       .catch((error) => {

@@ -72,7 +72,6 @@ const Checkout = () => {
       collection
         .add(orden)
         .then((res) => {
-          console.log(res.id);
           Swal.fire({
             icon: 'success',
             title: 'Su compra fue registrada',

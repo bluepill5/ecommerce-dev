@@ -1,6 +1,5 @@
 import {useState} from 'react';
 import StyledLink from './StyledLink';
-import { Redirect } from 'react-router-dom';
 import '../css/buttonStyle.css';
 import Swal from 'sweetalert2';
 

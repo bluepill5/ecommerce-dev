@@ -27,7 +27,7 @@ const ItemList = ({ products }) => {
       {products !== null &&
         products
           .filter((product) => filterCategory(product, id))
-          .map((product, index) => <Item product={product} />)}
+          .map((product, index) => <Item product={product} key={index} />)}
     </Row>
   );
 };
