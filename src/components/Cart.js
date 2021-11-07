@@ -21,7 +21,7 @@ const Cart = () => {
 
     return (
         
-      <div className="Container p-4">
+      <div className="Container w-50 text-center mx-auto p-3 mt-2">
         {carrito.map((item, index) => {
           return (
               <ul className="list-group" key={index}>
@@ -29,7 +29,7 @@ const Cart = () => {
                   <li className="list-group-item">{item.title}</li>
                   <li className="list-group-item"><NumberFormat value={item.price} displayType={'text'} thousandSeparator={true} prefix={'$'}/></li>
                   <li className="list-group-item">{item.quantity}</li>
-                  <button className="btn btn-danger" onClick={() => {onRemove(index)}}>Eliminar</button>
+                  <button className="btn btn-danger" onClick={() => {onRemove(index)}}><i className="material-icons">delete_outline</i></button>
               </ul>
           );
         })}
@@ -39,7 +39,6 @@ const Cart = () => {
         </Link>
         <h1>Total: <NumberFormat value={total} displayType={'text'} thousandSeparator={true} prefix={'$'} /></h1>
       </div>
-     
     );
 }
 

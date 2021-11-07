@@ -1,6 +1,8 @@
 import {useState} from 'react';
 import StyledLink from './StyledLink';
+import { Redirect } from 'react-router-dom';
 import '../css/buttonStyle.css';
+import Swal from 'sweetalert2';
 
 const ItemCount = (props) => {
     const {stock, initial, onAdd} = props;
@@ -16,6 +18,19 @@ const ItemCount = (props) => {
 
     const confirm = () => {
       onAdd(quantity);
+      if (quantity > 0) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Se agregaron productos al carrito',
+          text: `Continuar comprando`,
+        });
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'No se seleccionaron productos',
+          text: `Continuar comprando`,
+        });
+      }
     }
 
     return (
@@ -41,9 +56,11 @@ const ItemCount = (props) => {
           <button className="buttonCarrito" onClick={confirm}>
             Agregar
           </button>
+          <>
           <StyledLink to="/cart">
             <button className="buttonCarrito">Confirmar</button>
           </StyledLink>
+          </>
         </div>
       </div>
     );

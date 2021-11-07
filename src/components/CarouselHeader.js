@@ -4,13 +4,14 @@ import Container from "react-bootstrap/Container";
 const CarouselHeader = (props) => {
     const {banner1, banner2, banner3, banner4} = props;
     return (
-      <Container fluid={true} className="p-0">
+      <Container fluid={true} className="p-0 mt-5">
         <Carousel fade>
           <Carousel.Item>
             <img
-              className="d-block w-100 h-10"
+              className="d-block w-100 h-10 mt-5 pt-4"
               src="https://images.squarespace-cdn.com/content/v1/54243095e4b07ee637a9f812/1539120988923-DVW2LFWY79BESDLWW5TW/Site-Collection-Banner-Emanations.jpg?format=750w"
               alt="First slide"
+              height="180em"
             />
             <Carousel.Caption>
               <h3>{banner1}</h3>
@@ -19,9 +20,10 @@ const CarouselHeader = (props) => {
           </Carousel.Item>
           <Carousel.Item>
             <img
-              className="d-block w-100 h-10"
+              className="d-block w-100 h-10 mt-5 pt-4"
               src="https://images.squarespace-cdn.com/content/v1/54243095e4b07ee637a9f812/1539121040456-PC37C061M5JLYPJMX4XN/Site-Collection-Banner-Watchers.jpg?format=750w"
-              alt="First slide"
+              alt="Second slide"
+              height="180em"
             />
             <Carousel.Caption>
               <h3>{banner2}</h3>
@@ -30,9 +32,10 @@ const CarouselHeader = (props) => {
           </Carousel.Item>
           <Carousel.Item>
             <img
-              className="d-block w-100"
+              className="d-block w-100 mt-5 pt-4"
               src="https://images.squarespace-cdn.com/content/v1/54243095e4b07ee637a9f812/1539121063930-VZ76ZKA0LKEBO4Q04QML/Site-Collection-Banner-Zodiac.jpg"
-              alt="Second slide"
+              alt="Third slide"
+              height="180em"
             />
 
             <Carousel.Caption>
@@ -42,9 +45,10 @@ const CarouselHeader = (props) => {
           </Carousel.Item>
           <Carousel.Item>
             <img
-              className="d-block w-100"
+              className="d-block w-100 mt-5 pt-4"
               src="https://images.squarespace-cdn.com/content/v1/54243095e4b07ee637a9f812/1539121052528-Q1NA9AL4WNBFLGIDBNCM/Site-Collection-Banner-Seraphim.jpg"
-              alt="Third slide"
+              alt="Fourth slide"
+              height="180em"
             />
 
             <Carousel.Caption>

@@ -9,7 +9,7 @@ const {Brand, Toggle, Collapse} = NavBar;
 
 const Header = ({children}) => {
     return (
-      <NavBar expand="md" bg="dark" variant="dark">
+      <NavBar fixed="top" expand="md" bg="dark" variant="dark">
         <Container fluid={true}>
           <CartWidget />
           <Brand>
